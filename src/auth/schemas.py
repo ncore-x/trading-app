@@ -1,6 +1,5 @@
 from typing import Optional
 from fastapi_users import schemas
-from pydantic_settings import BaseSettings
 
 
 class UserRead(schemas.BaseUser[int]):
@@ -12,9 +11,8 @@ class UserRead(schemas.BaseUser[int]):
     is_superuser: bool = False
     is_verified: bool = False
 
-
-class MyConfig(BaseSettings):
-    orm_mode: bool = True
+    class Config:
+        orm_mode = True
 
 
 class UserCreate(schemas.BaseUserCreate):
